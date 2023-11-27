@@ -1,0 +1,17 @@
+
+@echo off
+Echo Digite o nome do usuario deste computador!
+set /p nome=nome do usuario = 
+echo O nome escolhido foi '%nome%'.
+Echo apartir de agora iremos criar pastas no one driver e redirecionar as pastas do computador.
+
+mkdir "%USERPROFILE%\OneDrive\%nome%\MeusArquivos\Desktop"
+mkdir "%USERPROFILE%\OneDrive\%nome%\MeusArquivos\Documentos"
+mkdir "%USERPROFILE%\OneDrive\%nome%\MeusArquivos\Imagens"
+mkdir "%USERPROFILE%\OneDrive\%nome%\MeusArquivos\Videos"
+
+
+reg.exe add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders" /v "Desktop" /t REG_SZ /d "%USERPROFILE%\OneDrive\%nome%\MeusArquivos\Desktop" /f
+reg.exe add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders" /v "Personal" /t REG_SZ /d "%USERPROFILE%\OneDrive\%nome%\MeusArquivos\Documentos" /f
+reg.exe add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders" /v "My Pictures" /t REG_SZ /d "%USERPROFILE%\OneDrive\%nome%\MeusArquivos\Imagens" /f
+reg.exe add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders" /v "My Video" /t REG_SZ /d "%USERPROFILE%\OneDrive\%nome%\MeusArquivos\Videos" /f
